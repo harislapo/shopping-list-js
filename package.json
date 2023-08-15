@@ -1,0 +1,11 @@
+{
+  "name": "shopping-list-js",
+  "version": "1.0.0",
+  "description": "Shopping list made in plain JS.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Haris Lapo",
+  "license": "ISC"
+}
