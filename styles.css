@@ -14,17 +14,13 @@ body {
   line-height: 1.5;
 }
 
-.section {
-  padding: 5rem 0;
-}
-
 .section-center {
   width: 90vw;
   margin: 8rem auto 0 auto;
   background: #fff;
   border-radius: 0.5rem;
   transition: all 0.3s linear;
-  padding: 2rem;
+  padding: 3rem;
   max-width: 35rem;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
