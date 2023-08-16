@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: hsl(210, 36%, 96%);
+  color: hsl(209, 61%, 16%);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.section {
+  padding: 5rem 0;
+}
+
+.section-center {
+  width: 90vw;
+  margin: 8rem auto 0 auto;
+  background: #fff;
+  border-radius: 0.5rem;
+  transition: all 0.3s linear;
+  padding: 2rem;
+  max-width: 35rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.section-center:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.shopping-form {
+  color: hsl(205, 87%, 24%);
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.form-control {
+  display: flex;
+  justify-content: center;
+}
+
+#shopping-list-item {
+  background: hsl(210, 36%, 96%);
+  padding: 0.3rem 0.3rem 0.3rem 1rem;
+  border-radius: 0.5rem;
+  border-color: transparent;
+  flex: 1 0 auto;
+  color: hsl(210, 22%, 49%);
+  font-size: 1rem;
+}
+
+#shopping-list-item::placeholder {
+  font-family: 'Open Sans', sans-serif;
+  color: hsl(210, 22%, 49%);
+}
+
+h1,
+h3 {
+  letter-spacing: 0.2rem;
+  text-transform: capitalize;
+  line-height: 1.25;
+  margin-bottom: 0.8rem;
+  font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+p {
+  margin-bottom: 1.25rem;
+  color: hsl(210, 22%, 49%);
+}
