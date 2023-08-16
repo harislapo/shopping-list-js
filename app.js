@@ -1,7 +1,7 @@
 // Get items
 const alert = document.querySelector('.alert');
 const form = document.querySelector('.shopping-form');
-const shoppingItem = document.getElementById('shopping-input-item');
+const inputItem = document.getElementById('shopping-input-item');
 const container = document.querySelector('.shopping-list-container');
 const list = document.querySelector('.shopping-list');
 const addBtn = document.querySelector('.add-btn');
@@ -27,9 +27,14 @@ const displayAlert = (text, action) => {
   }, 1500);
 };
 
+const setToDefaultValue = () => {
+  inputItem.value = '';
+};
+
+// Main functions
 const addItem = (e) => {
   e.preventDefault();
-  const value = shoppingItem.value;
+  const value = inputItem.value;
   const id = getRandomID();
 
   // Adding an item
@@ -67,6 +72,9 @@ const addItem = (e) => {
 
     // Dynamically add class that changes visibility of list
     container.classList.add('show-container');
+
+    // Reset input to empty
+    setToDefaultValue();
   } else if (value && isEditing) {
     console.log('Editing.');
   } else {
