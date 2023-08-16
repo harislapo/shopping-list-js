@@ -176,3 +176,23 @@ p {
 .reset-btn:hover {
   color: hsl(360, 67%, 44%);
 }
+
+.alert {
+  text-transform: capitalize;
+  height: 1.3rem;
+  display: grid;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.1rem;
+  border-radius: 0.25rem;
+}
+.alert-danger {
+  color: #721c24;
+  background: #f8d7da;
+}
+.alert-success {
+  color: #155724;
+  background: #d4edda;
+}
