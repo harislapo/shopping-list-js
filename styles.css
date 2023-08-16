@@ -80,3 +80,22 @@ p {
   margin-bottom: 1.25rem;
   color: hsl(210, 22%, 49%);
 }
+
+.add-btn {
+  text-transform: capitalize;
+  cursor: pointer;
+  background: hsl(205, 90%, 76%);
+  font-size: 0.8rem;
+  border-color: transparent;
+  flex: 0 0 5rem;
+  padding: 0.25rem;
+  letter-spacing: 1px;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  content: #49a6e9;
+  transition: all 0.2s linear;
+}
+.add-btn:hover {
+  color: #fff;
+  background: #49a6e9;
+}
