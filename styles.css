@@ -178,7 +178,6 @@ p {
 }
 
 .alert {
-  text-transform: capitalize;
   height: 1.3rem;
   display: grid;
   align-items: center;

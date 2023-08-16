@@ -12,8 +12,19 @@ let editingItem;
 let isEditing = false;
 let editID = '';
 
+// Helper functions
 const getRandomID = () => {
   return new Date().getTime().toString();
+};
+
+const displayAlert = (text, action) => {
+  alert.textContent = text;
+  alert.classList.add(`alert-${action}`);
+
+  setTimeout(() => {
+    alert.textContent = '';
+    alert.classList.remove(`alert-${action}`);
+  }, 1500);
 };
 
 const addItem = (e) => {
@@ -26,8 +37,7 @@ const addItem = (e) => {
   } else if (value && isEditing) {
     console.log('Editing.');
   } else {
-    alert.textContent = 'Empty value!';
-    alert.classList.add('alert-danger');
+    displayAlert('Please enter a value.', 'danger');
   }
 };
 
