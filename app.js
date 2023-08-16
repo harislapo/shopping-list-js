@@ -32,8 +32,41 @@ const addItem = (e) => {
   const value = shoppingItem.value;
   const id = getRandomID();
 
+  // Adding an item
   if (value && !isEditing) {
-    console.log('Add item to the list.');
+    // Create new article element
+    const item = document.createElement('article');
+
+    // Add class to the newly created element
+    item.classList.add('shopping-list-item');
+
+    // Initialize attribute to be added to the element
+    // and set it to the randomly generated id
+    const attribute = document.createAttribute('data-id');
+    attribute.value = id;
+
+    // Add atribute to the element
+    item.setAttributeNode(attribute);
+
+    // Add HTML dynamically to the article element
+    item.innerHTML = `
+    <p class="title">${value}</p>
+    <div class="btn-container">
+      <button type="button" class="edit-btn">
+        <i class="fa-solid fa-pen"></i>
+      </button>
+      <button type="button" class="delete-btn">
+        <i class="fa-solid fa-trash-can"></i>
+      </button>
+    </div>
+    `;
+
+    // Append the article to the list and display an success alert
+    list.appendChild(item);
+    displayAlert('Item added to the list!', 'success');
+
+    // Dynamically add class that changes visibility of list
+    container.classList.add('show-container');
   } else if (value && isEditing) {
     console.log('Editing.');
   } else {
