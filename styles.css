@@ -44,7 +44,7 @@ body {
   justify-content: center;
 }
 
-#shopping-list-item {
+#shopping-input-item {
   background: hsl(210, 36%, 96%);
   padding: 0.3rem 0.3rem 0.3rem 1rem;
   border-radius: 0.5rem;
@@ -54,7 +54,7 @@ body {
   font-size: 1rem;
 }
 
-#shopping-list-item::placeholder {
+#shopping-input-item::placeholder {
   font-family: 'Open Sans', sans-serif;
   color: hsl(210, 22%, 49%);
 }
@@ -95,7 +95,88 @@ p {
   content: #49a6e9;
   transition: all 0.2s linear;
 }
+
 .add-btn:hover {
   color: #fff;
   background: #49a6e9;
+}
+
+.shopping-list-container {
+  visibility: hidden;
+  margin-top: 2rem;
+  transition: all 0.2s linear;
+}
+
+.shopping-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-transform: capitalize;
+  margin-bottom: 0.5rem;
+  padding: 0.25rem 1rem;
+  border-radius: 0.3rem;
+  transition: all 0.3s linear;
+}
+
+.shopping-list-item:hover {
+  color: hsl(210, 22%, 49%);
+  background: hsl(210, 36%, 96%);
+}
+
+.shopping-list-item:hover .title {
+  color: hsl(210, 22%, 49%);
+}
+
+.title {
+  color: hsl(209, 61%, 16%);
+  letter-spacing: 1px;
+  margin-bottom: 0;
+  transition: all 0.2s linear;
+}
+
+.edit-btn,
+.delete-btn {
+  margin: 0 0.15rem;
+  font-size: 0.7rem;
+  background: transparent;
+  border-color: transparent;
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+
+.edit-btn {
+  color: hsl(125, 71%, 66%);
+}
+
+.edit-btn:hover {
+  color: hsl(125, 67%, 44%);
+}
+
+.delete-btn {
+  color: hsl(360, 71%, 66%);
+}
+
+.delete-btn:hover {
+  color: hsl(360, 67%, 44%);
+}
+
+.reset-btn {
+  text-transform: capitalize;
+  background: transparent;
+  border-color: transparent;
+  margin: 0 auto;
+  width: 10rem;
+  height: 1.5rem;
+  display: grid;
+  align-items: center;
+  font-size: 0.85rem;
+  letter-spacing: 0.1rem;
+  margin-top: 1.25rem;
+  color: hsl(360, 71%, 66%);
+  transition: all 0.3s linear;
+  cursor: pointer;
+}
+
+.reset-btn:hover {
+  color: hsl(360, 67%, 44%);
 }

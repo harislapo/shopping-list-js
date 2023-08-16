@@ -18,12 +18,28 @@
         <div class="form-control">
           <input
             type="text"
-            id="shopping-list-item"
+            id="shopping-input-item"
             placeholder="e.g. Müesli"
           />
           <button type="submit" class="add-btn">Add</button>
         </div>
       </form>
+      <div class="shopping-list-container">
+        <div class="shopping-list">
+          <article class="shopping-list-item">
+            <p class="title">Item</p>
+            <div class="btn-container">
+              <button type="button" class="edit-btn">
+                <i class="fa-solid fa-pen"></i>
+              </button>
+              <button type="button" class="delete-btn">
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
+            </div>
+          </article>
+        </div>
+        <button type="button" class="reset-btn">Reset</button>
+      </div>
     </section>
   </body>
 </html>
