@@ -31,29 +31,29 @@ const setToDefaultValue = () => {
   inputItem.value = '';
 };
 
-// Main functions
+// Main functions.
 const addItem = (e) => {
   e.preventDefault();
   const value = inputItem.value;
   const id = getRandomID();
 
-  // Adding an item
+  // Adding an item.
   if (value && !isEditing) {
     // Create new article element
     const item = document.createElement('article');
 
-    // Add class to the newly created element
+    // Add class to the newly created element.
     item.classList.add('shopping-list-item');
 
     // Initialize attribute to be added to the element
-    // and set it to the randomly generated id
+    // and set it to the randomly generated id.
     const attribute = document.createAttribute('data-id');
     attribute.value = id;
 
-    // Add atribute to the element
+    // Add atribute to the element.
     item.setAttributeNode(attribute);
 
-    // Add HTML dynamically to the article element
+    // Add HTML dynamically to the article element.
     item.innerHTML = `
     <p class="title">${value}</p>
     <div class="btn-container">
@@ -66,7 +66,7 @@ const addItem = (e) => {
     </div>
     `;
 
-    // Initialize buttons when the item is added to the DOM.
+    // Initialize buttons when the item is added to the DOM so we can actually use them.
     const deleteBtn = item.querySelector('.delete-btn');
     const editBtn = item.querySelector('.edit-btn');
     deleteBtn.addEventListener('click', deleteItem);
@@ -81,6 +81,7 @@ const addItem = (e) => {
 
     // Reset input to empty
     setToDefaultValue();
+    // Editing an item.
   } else if (value && isEditing) {
     console.log('Editing.');
   } else {
@@ -103,8 +104,21 @@ const resetItems = () => {
   displayAlert('List reseted!', 'danger');
 };
 
-const deleteItem = () => {
-  console.log('Item deleted!');
+const deleteItem = (e) => {
+  // Get an item's position in DOM.
+  const element = e.currentTarget.parentElement.parentElement;
+  // Add timeout to mimick API call.
+  setTimeout(() => {
+    // Remove it from the DOM.
+    list.removeChild(element);
+    // Check if the deleted item was the last item in the list remaining.
+    // If it is, hide container.
+    if (list.children.length === 0) {
+      container.classList.remove('show-container');
+    }
+  }, 600);
+  displayAlert('Item removed!', 'success');
+  setToDefaultValue();
 };
 
 const editItem = () => {
