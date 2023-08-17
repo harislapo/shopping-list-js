@@ -33,6 +33,11 @@ const setToDefaultValue = () => {
   editID = '';
   addBtn.textContent = 'Add';
 };
+const getLocalStorage = () => {
+  return localStorage.getItem('shopping-list')
+    ? JSON.parse(localStorage.getItem('shopping-list'))
+    : [];
+};
 
 // Main functions.
 const addItem = (e) => {
@@ -81,6 +86,9 @@ const addItem = (e) => {
 
     // Dynamically add class that changes visibility of list
     container.classList.add('show-container');
+
+    // Add to local storage.
+    addToLocalStorage(id, value);
 
     // Reset input to empty
     setToDefaultValue();
@@ -150,6 +158,17 @@ const editItem = (e) => {
   // Change button's text from 'Add' to 'Edit'.
   addBtn.textContent = 'Edit';
 };
+
+// Local storage.
+const addToLocalStorage = (id, value) => {
+  const item = { id, value };
+  let items = getLocalStorage();
+  console.log(items);
+  items.push(item);
+  localStorage.setItem('shopping-list', JSON.stringify(items));
+};
+const removeFromLocalStorage = (id) => {};
+const editLocalStorage = (id, value) => {};
 
 // Event handlers
 form.addEventListener('submit', addItem);
