@@ -82,5 +82,21 @@ const addItem = (e) => {
   }
 };
 
-// Submit form
+// Clear shopping list.
+const resetItems = () => {
+  // Get all added items.
+  const items = document.querySelectorAll('.shopping-list-item');
+  if (items.length > 0) {
+    // Remove them all.
+    items.forEach((item) => {
+      list.removeChild(item);
+    });
+  }
+  // Hide the container.
+  container.classList.remove('show-container');
+  displayAlert('List reseted!', 'danger');
+};
+
+// Event handlers
 form.addEventListener('submit', addItem);
+resetBtn.addEventListener('click', resetItems);
