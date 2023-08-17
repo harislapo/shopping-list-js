@@ -55,20 +55,12 @@ body {
   color: hsl(210, 22%, 49%);
 }
 
-h1,
 h3 {
   letter-spacing: 0.2rem;
   text-transform: capitalize;
   line-height: 1.25;
   margin-bottom: 0.8rem;
   font-family: 'Roboto', sans-serif;
-}
-
-h1 {
-  font-size: 3rem;
-}
-
-h3 {
   font-size: 1.5rem;
 }
 
@@ -187,10 +179,12 @@ p {
   letter-spacing: 0.1rem;
   border-radius: 0.25rem;
 }
+
 .alert-danger {
   color: #721c24;
   background: #f8d7da;
 }
+
 .alert-success {
   color: #155724;
   background: #d4edda;
@@ -198,4 +192,20 @@ p {
 
 .show-container {
   visibility: visible;
+}
+
+@media screen and (min-width: 800px) {
+  h3 {
+    font-size: 1.75rem;
+    line-height: 1;
+  }
+  body {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .section-center {
+    width: 95vw;
+  }
 }
