@@ -98,6 +98,10 @@ const addItem = (e) => {
     editingItem.innerHTML = value;
 
     displayAlert('Value changed!', 'success');
+
+    // Edit local storage
+    editLocalStorage(editID, value);
+
     setToDefaultValue();
   } else {
     displayAlert('Please enter a value.', 'danger');
@@ -175,7 +179,19 @@ const removeFromLocalStorage = (id) => {
   items = items.filter((item) => item.id !== id);
   localStorage.setItem('shopping-list', JSON.stringify(items));
 };
-const editLocalStorage = (id, value) => {};
+const editLocalStorage = (id, value) => {
+  let items = getLocalStorage();
+
+  // Iterate through items in local storage array
+  items = items.map((item) => {
+    if (item.id === id) {
+      // If found, edit its value to the new value
+      item.value = value;
+    }
+    return item;
+  });
+  localStorage.setItem('shopping-list', JSON.stringify(items));
+};
 
 // Event handlers
 form.addEventListener('submit', addItem);
