@@ -117,6 +117,8 @@ const resetItems = () => {
   // Hide the container.
   container.classList.remove('show-container');
   displayAlert('List reseted!', 'danger');
+  setToDefaultValue();
+  localStorage.removeItem('shopping-list');
 };
 
 const deleteItem = (e) => {
@@ -172,7 +174,6 @@ const removeFromLocalStorage = (id) => {
 
   items = items.filter((item) => item.id !== id);
   localStorage.setItem('shopping-list', JSON.stringify(items));
-
 };
 const editLocalStorage = (id, value) => {};
 
