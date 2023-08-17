@@ -136,6 +136,7 @@ const deleteItem = (e) => {
   }, 600);
   displayAlert('Item removed!', 'success');
   setToDefaultValue();
+  removeFromLocalStorage(id);
 };
 
 const editItem = (e) => {
@@ -163,11 +164,16 @@ const editItem = (e) => {
 const addToLocalStorage = (id, value) => {
   const item = { id, value };
   let items = getLocalStorage();
-  console.log(items);
   items.push(item);
   localStorage.setItem('shopping-list', JSON.stringify(items));
 };
-const removeFromLocalStorage = (id) => {};
+const removeFromLocalStorage = (id) => {
+  let items = getLocalStorage();
+
+  items = items.filter((item) => item.id !== id);
+  localStorage.setItem('shopping-list', JSON.stringify(items));
+
+};
 const editLocalStorage = (id, value) => {};
 
 // Event handlers
