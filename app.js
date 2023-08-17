@@ -33,10 +33,53 @@ const setToDefaultValue = () => {
   editID = '';
   addBtn.textContent = 'Add';
 };
+
 const getLocalStorage = () => {
   return localStorage.getItem('shopping-list')
     ? JSON.parse(localStorage.getItem('shopping-list'))
     : [];
+};
+
+// Function for creating list items.
+const createListItem = (id, value) => {
+  // Create new article element
+  const item = document.createElement('article');
+
+  // Add class to the newly created element.
+  item.classList.add('shopping-list-item');
+
+  // Initialize attribute to be added to the element
+  // and set it to the randomly generated id.
+  const attribute = document.createAttribute('data-id');
+  attribute.value = id;
+
+  // Add atribute to the element.
+  item.setAttributeNode(attribute);
+
+  // Add HTML dynamically to the article element.
+  item.innerHTML = `
+<p class="title">${value}</p>
+<div class="btn-container">
+  <button type="button" class="edit-btn">
+    <i class="fa-solid fa-pen"></i>
+  </button>
+  <button type="button" class="delete-btn">
+    <i class="fa-solid fa-trash-can"></i>
+  </button>
+</div>
+`;
+
+  // Initialize buttons when the item is added to the DOM so we can actually use them.
+  const deleteBtn = item.querySelector('.delete-btn');
+  const editBtn = item.querySelector('.edit-btn');
+  deleteBtn.addEventListener('click', deleteItem);
+  editBtn.addEventListener('click', editItem);
+
+  // Append the article to the list
+  list.appendChild(item);
+
+  // Dynamically add class that changes visibility of the list
+  container.classList.add('show-container');
 };
 
 // Main functions.
@@ -47,45 +90,8 @@ const addItem = (e) => {
 
   // Adding an item.
   if (value && !isEditing) {
-    // Create new article element
-    const item = document.createElement('article');
-
-    // Add class to the newly created element.
-    item.classList.add('shopping-list-item');
-
-    // Initialize attribute to be added to the element
-    // and set it to the randomly generated id.
-    const attribute = document.createAttribute('data-id');
-    attribute.value = id;
-
-    // Add atribute to the element.
-    item.setAttributeNode(attribute);
-
-    // Add HTML dynamically to the article element.
-    item.innerHTML = `
-    <p class="title">${value}</p>
-    <div class="btn-container">
-      <button type="button" class="edit-btn">
-        <i class="fa-solid fa-pen"></i>
-      </button>
-      <button type="button" class="delete-btn">
-        <i class="fa-solid fa-trash-can"></i>
-      </button>
-    </div>
-    `;
-
-    // Initialize buttons when the item is added to the DOM so we can actually use them.
-    const deleteBtn = item.querySelector('.delete-btn');
-    const editBtn = item.querySelector('.edit-btn');
-    deleteBtn.addEventListener('click', deleteItem);
-    editBtn.addEventListener('click', editItem);
-
-    // Append the article to the list and display an success alert
-    list.appendChild(item);
+    createListItem(id, value);
     displayAlert('Item added to the list!', 'success');
-
-    // Dynamically add class that changes visibility of list
-    container.classList.add('show-container');
 
     // Add to local storage.
     addToLocalStorage(id, value);
@@ -173,12 +179,14 @@ const addToLocalStorage = (id, value) => {
   items.push(item);
   localStorage.setItem('shopping-list', JSON.stringify(items));
 };
+
 const removeFromLocalStorage = (id) => {
   let items = getLocalStorage();
 
   items = items.filter((item) => item.id !== id);
   localStorage.setItem('shopping-list', JSON.stringify(items));
 };
+
 const editLocalStorage = (id, value) => {
   let items = getLocalStorage();
 
@@ -193,6 +201,19 @@ const editLocalStorage = (id, value) => {
   localStorage.setItem('shopping-list', JSON.stringify(items));
 };
 
+// Load items from the local storage on refresh.
+const loadItems = () => {
+  let items = getLocalStorage();
+  // If local storage entry exist, loop through and create items in the list from them.
+  if (items.length > 0) {
+    items.forEach((item) => {
+      createListItem(item.id, item.value);
+    });
+  }
+};
+
 // Event handlers
 form.addEventListener('submit', addItem);
 resetBtn.addEventListener('click', resetItems);
+// On refresh 
+window.addEventListener('DOMContentLoaded', loadItems);
