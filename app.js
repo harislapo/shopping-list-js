@@ -12,7 +12,7 @@ let editingItem;
 let isEditing = false;
 let editID = '';
 
-// Helper functions
+// Helper functions.
 const getRandomID = () => {
   return new Date().getTime().toString();
 };
@@ -29,6 +29,9 @@ const displayAlert = (text, action) => {
 
 const setToDefaultValue = () => {
   inputItem.value = '';
+  isEditing = false;
+  editID = '';
+  addBtn.textContent = 'Add';
 };
 
 // Main functions.
@@ -83,7 +86,11 @@ const addItem = (e) => {
     setToDefaultValue();
     // Editing an item.
   } else if (value && isEditing) {
-    console.log('Editing.');
+    // Set the value of the currently editing item to the newly inserted value from the input box.
+    editingItem.innerHTML = value;
+
+    displayAlert('Value changed!', 'success');
+    setToDefaultValue();
   } else {
     displayAlert('Please enter a value.', 'danger');
   }
@@ -107,6 +114,8 @@ const resetItems = () => {
 const deleteItem = (e) => {
   // Get an item's position in DOM.
   const element = e.currentTarget.parentElement.parentElement;
+  // Get an item's id from its dataset.
+  const id = element.dataset.id;
   // Add timeout to mimick API call.
   setTimeout(() => {
     // Remove it from the DOM.
@@ -121,8 +130,25 @@ const deleteItem = (e) => {
   setToDefaultValue();
 };
 
-const editItem = () => {
-  console.log('Item edited!');
+const editItem = (e) => {
+  // Get an item's position in DOM.
+  const element = e.currentTarget.parentElement.parentElement;
+
+  // Get element's id.
+  editID = element.dataset.id;
+
+  // Initialize the item that we want to change its value.
+  // .parentElement = div'btn-container', .previousElementSibling = div'title'.
+  editingItem = e.currentTarget.parentElement.previousElementSibling;
+
+  // Get its value and initialize it to the form input value.
+  inputItem.value = editingItem.innerHTML;
+
+  // Set editing flag to true.
+  isEditing = true;
+
+  // Change button's text from 'Add' to 'Edit'.
+  addBtn.textContent = 'Edit';
 };
 
 // Event handlers
