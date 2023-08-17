@@ -66,6 +66,12 @@ const addItem = (e) => {
     </div>
     `;
 
+    // Initialize buttons when the item is added to the DOM.
+    const deleteBtn = item.querySelector('.delete-btn');
+    const editBtn = item.querySelector('.edit-btn');
+    deleteBtn.addEventListener('click', deleteItem);
+    editBtn.addEventListener('click', editItem);
+
     // Append the article to the list and display an success alert
     list.appendChild(item);
     displayAlert('Item added to the list!', 'success');
@@ -95,6 +101,14 @@ const resetItems = () => {
   // Hide the container.
   container.classList.remove('show-container');
   displayAlert('List reseted!', 'danger');
+};
+
+const deleteItem = () => {
+  console.log('Item deleted!');
+};
+
+const editItem = () => {
+  console.log('Item edited!');
 };
 
 // Event handlers
